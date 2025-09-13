@@ -1,0 +1,29 @@
+esphome:
+  name: living-room-nabu
+
+esp32:
+  variant: esp32s3
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "no"
+
+ota:
+  - platform: esphome
+    password: "no"
+
+wifi:
+  ssid: !secret wifi_name
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Living-Room-Nabu"
+    password: "Q9DcPeyrFkIP"
+
+captive_portal:
