@@ -29,8 +29,8 @@ wifi:
 captive_portal:
 
 i2c:
-  sda: gpio_11
-  scl: gpio_10
+  sda: GPIO11
+  scl: GPIO10
   scan: true
   id: bus_a
 tca9555:
@@ -38,13 +38,10 @@ tca9555:
 time:
   - platform: pcf85063
     id: pcf85063_time
-    pin:
-      tca9555: tca9555_hub
-      # Use pin number 0
-      number: 5
+
 output:
   - platform: ledc
-    pin: gpio_38
+    pin: GPIO38
     id: backlight_pwm
     frequency: 1000Hz
 
@@ -57,27 +54,27 @@ light:
     default_transition_length: 250ms
 
 binary_sensor:
+  # - platform: gpio
+  #   pin: CHIP_PU
+  #   name: "Reset"
   - platform: gpio
-    pin: CHIP_PU
-    name: "Reset"
-  - platform: gpio
-    pin: gpio_0
+    pin: GPIO0
     name: "Boot"
   - platform: gpio # Volume up?
     pin:
-      tca9555: tca9555_hub
+      tca9555: TCA9555_hub
       # Use pin number 0
       number: 10
     name: "KEY1"
   - platform: gpio # Volume down?
     pin:
-      tca9555: tca9555_hub
+      tca9555: TCA9555_hub
       # Use pin number 0
       number: 11
     name: "KEY2"
   - platform: gpio # Wake button?
     pin:
-      tca9555: tca9555_hub
+      tca9555: TCA9555_hub
       # Use pin number 0
       number: 12
     name: "KEY3"
